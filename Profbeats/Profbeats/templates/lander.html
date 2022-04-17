@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Music Search {% endblock %}
+
+{% block content %}
+<h1>Welcome to Profbeats, {{ user }}</h1>
+
+{% if tracksall %}
+<table class="table">
+<tbody>
+<tr>
+<h1>Because you listened to: </h1>
+{% for track in recently_listened_to %}
+<td>
+<iframe src="https://open.spotify.com/embed/track/{{ track }}" width="300" height="380" 
+frameborder="10" allowtransparency="true" allow="encrypted-media"></iframe>
+</td>
+{% endfor %}
+</tr>
+</tbody>
+</table>
+<table class="table">
+<tbody>
+<h1>You may like: </h1>
+{% for tracks in tracksall %}
+<tr>
+{% for track in tracks %}
+<td>
+<iframe src="https://open.spotify.com/embed/track/{{ track }}" width="300" height="380" 
+frameborder="10" allowtransparency="true" allow="encrypted-media"></iframe>
+</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</tr>
+</tbody>
+</table>
+
+{% endif %}
+
+{% endblock %}
